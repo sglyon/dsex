@@ -19,7 +19,7 @@ environment if needed:
 ```elixir
 config :dsex, :python,
   python: "==3.13.*",
-  dependencies: ["dspy[optuna]==3.5.0"],
+  dependencies: ["dspy[optuna,litellm]==3.5.0"],
   extra_dependencies: []
 ```
 
@@ -27,6 +27,16 @@ config :dsex, :python,
 
 ```elixir
 Dsex.configure(lm: Dsex.LM.new("openai/gpt-4o-mini"))
+
+# Or through a LiteLLM proxy such as the Areté gateway. The `litellm_proxy/` prefix keeps
+# native reasoning (ChainOfThought's `reasoning`) intact; `openai/` drops it.
+Dsex.configure(
+  lm:
+    Dsex.LM.new("litellm_proxy/anthropic/claude-haiku-4-5",
+      api_base: System.fetch_env!("LLM_GATEWAY_URL"),
+      api_key: System.fetch_env!("LLM_GATEWAY_KEY")
+    )
+)
 
 # Signatures: string form or DSL
 defmodule QA do

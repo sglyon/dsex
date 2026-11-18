@@ -21,7 +21,7 @@ defmodule Dsex.Python do
 
       config :dsex, :python,
         python: "==3.13.*",
-        dependencies: ["dspy[optuna]==3.5.0"],
+        dependencies: ["dspy[optuna,litellm]==3.5.0"],
         extra_dependencies: []
 
   If Pythonx was already initialized (for example by `config :pythonx, :uv_init`
@@ -29,7 +29,7 @@ defmodule Dsex.Python do
   """
 
   @default_python "==3.13.*"
-  @default_dependencies ["dspy[optuna]==3.5.0"]
+  @default_dependencies ["dspy[optuna,litellm]==3.5.0"]
   @ready_key {__MODULE__, :ready}
 
   @doc "Returns the pyproject.toml Dsex uses for `Pythonx.uv_init/2`."
