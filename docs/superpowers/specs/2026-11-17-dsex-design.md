@@ -7,7 +7,7 @@ with metrics, tools, and custom program logic written in Elixir.
 
 ## Approaches considered
 
-1. **Wrap the real DSPy via Pythonx (chosen, per Spencer).** CPython embedded in the BEAM; DSPy
+1. **Wrap the real DSPy via Pythonx (chosen).** CPython embedded in the BEAM; DSPy
    3.5.0 installed by uv on first use. Every optimizer (MIPROv2, GEPA, SIMBA, COPRO, ...) works
    unchanged and tracks upstream. Cost: the GIL serializes Python bytecode, though DSPy's LM
    calls release it during HTTP I/O, so DSPy's own thread pools still overlap requests.
