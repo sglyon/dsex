@@ -129,3 +129,7 @@ Design notes: [`docs/superpowers/specs/2026-11-17-dsex-design.md`](docs/superpow
 
 To run against a real model, export your provider key and use `mix run` with a script like the
 usage example above. Never commit keys; `.env*` files are gitignored.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
